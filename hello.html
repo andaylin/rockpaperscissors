@@ -50,11 +50,31 @@
             }
         }
 
-        let playerSelection = window.prompt("Choose rock, paper, or scissor!", "rock");
-        let computerSelection = computerPlay();
-        console.log(computerSelection);
+        game = () => {
+            let playerScore = 0;
+            let computerScore = 0;
+            for (i = 0; i < 5; i++) {
+                let playerSelection = window.prompt("Choose rock, paper, or scissor!", "rock");
+                let computerSelection = computerPlay();
+                if (playRound(playerSelection, computerSelection) == "You Won!") {
+                    console.log("You: " + playerSelection + ". Computer: " + computerSelection);
+                    playerScore++;
+                } else {
+                    console.log("You: " + playerSelection + ". Computer: " + computerSelection);
+                    computerScore++;
+                }
+            }
+            console.log("Final Score: Computer = " + computerScore + ". Player Score = " + playerScore);
+            if (playerScore == computerScore) {
+                console.log("Draw!");
+            } else if (playerScore > computerScore) {
+                console.log("You Won!");
+            } else {
+                console.log("You Lost!");
+            }
+        }
 
-        console.log(playRound(playerSelection, computerSelection));
+        game();
 
     </script>
 </body>
